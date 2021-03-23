@@ -1,0 +1,19 @@
+language: php
+php:
+  - 7.2
+  - 7.3
+  - 7.4
+
+install:
+  - travis_retry composer install --no-interaction --no-suggest
+
+script:
+  - composer test -- --coverage-clover=coverage.clover
+
+after_success:
+  - travis_retry wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+
+branches:
+  only:
+    - master

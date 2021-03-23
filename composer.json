@@ -1,0 +1,35 @@
+{
+    "name": "promopult/tiktok-marketing-api",
+    "description": "https://ads.tiktok.com API PHP-wrapper",
+    "type": "library",
+    "license": "UNLICENSE",
+    "authors": [
+        {
+            "name": "Dmitry Gladyshev",
+            "email": "dgladyshev@promopult.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.2",
+        "ext-json": "*",
+        "psr/http-client": "~1.0.1",
+        "psr/http-message": "~1.0.1",
+        "guzzlehttp/psr7": "~1.7.0"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "~7.0",
+        "phpunit/phpunit": "~9.3.8"
+    },
+    "autoload" : {
+        "psr-4": {
+            "Promopult\\TikTokMarketingApi\\": "src/"
+        }
+    },
+    "autoload-dev" : {
+        "psr-4": {
+            "Promopult\\TikTokMarketingApi\\Tests": "tests/"
+        }
+    }
+}
