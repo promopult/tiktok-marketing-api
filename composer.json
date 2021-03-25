@@ -20,7 +20,7 @@
     },
     "require-dev": {
         "guzzlehttp/guzzle": "~7.0",
-        "phpunit/phpunit": "~9.3.8"
+        "phpunit/phpunit": "~9.3.8|~8.5.15"
     },
     "autoload" : {
         "psr-4": {

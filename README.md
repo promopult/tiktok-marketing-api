@@ -1,8 +1,12 @@
 # TikTok Marketing API PHP client library
 
-🚫 ️️Work In Progress. Not ready for use. 
-
 Convenient full-featured wrapper for [TikTok Marketing API](https://ads.tiktok.com/marketing_api/docs).
+
+🚫 ️️Work In Progress. Not ready for use.
+
+[![Build Status](https://travis-ci.org/promopult/tiktok-marketing-api.svg?branch=master)](https://travis-ci.org/promopult/dadata-client)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/promopult/tiktok-marketing-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/promopult/dadata-client/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/promopult/tiktok-marketing-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/promopult/dadata-client/?branch=master)
 
 ### Installation
 
