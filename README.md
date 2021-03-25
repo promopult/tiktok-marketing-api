@@ -4,9 +4,9 @@ Convenient full-featured wrapper for [TikTok Marketing API](https://ads.tiktok.c
 
 🚫 ️️Work In Progress. Not ready for use.
 
-[![Build Status](https://travis-ci.org/promopult/tiktok-marketing-api.svg?branch=master)](https://travis-ci.org/promopult/dadata-client)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/promopult/tiktok-marketing-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/promopult/dadata-client/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/promopult/tiktok-marketing-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/promopult/dadata-client/?branch=master)
+[![Build Status](https://travis-ci.org/promopult/tiktok-marketing-api.svg?branch=master)](https://travis-ci.org/promopult/tiktok-marketing-api)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/promopult/tiktok-marketing-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/promopult/tiktok-marketing-api/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/promopult/tiktok-marketing-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/promopult/tiktok-marketing-api/?branch=master)
 
 ### Installation
 
