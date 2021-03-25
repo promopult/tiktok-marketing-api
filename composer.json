@@ -31,5 +31,10 @@
         "psr-4": {
             "Promopult\\TikTokMarketingApi\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf"
     }
 }
