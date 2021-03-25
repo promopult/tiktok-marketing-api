@@ -1,5 +1,7 @@
 # TikTok Marketing API PHP client library
 
+🚫 ️️Work In Progress. Not ready for use. 
+
 Convenient full-featured wrapper for [TikTok Marketing API](https://ads.tiktok.com/marketing_api/docs).
 
 ### Installation
@@ -34,7 +36,7 @@ $client = new \Promopult\TikTokMarketingApi\Client(
     $httpClient
 );
 
-$response = $client->advertiser->get();
+$response = $client->user->info();
 
 print_r($response);
 
