@@ -47,6 +47,9 @@ final class Client implements \Promopult\TikTokMarketingApi\ServiceFactoryInterf
         return $this->createService($serviceName);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function createService(string $serviceName): \Promopult\TikTokMarketingApi\ServiceInterface
     {
         if (empty($this->services[$serviceName])) {

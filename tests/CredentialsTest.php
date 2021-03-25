@@ -17,4 +17,14 @@ class CredentialsTest extends TestCase
 
         $this->assertEquals(CredentialsInterface::API_BASE_URL_SANDBOX, $credentials->getApiBaseUrl());
     }
+
+    public function testConstructor()
+    {
+        $c = new Credentials('accessToken', 'appId', 'secret', 'url');
+
+        $this->assertEquals('accessToken', $c->getAccessToken());
+        $this->assertEquals('appId', $c->getAppId());
+        $this->assertEquals('secret', $c->getSecret());
+        $this->assertEquals('url', $c->getApiBaseUrl());
+    }
 }

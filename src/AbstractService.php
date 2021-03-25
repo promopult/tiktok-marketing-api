@@ -24,47 +24,36 @@ abstract class AbstractService implements \Promopult\TikTokMarketingApi\ServiceI
         $this->httpClient = $httpClient;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function callUnauthorized(
+    public function requestApi(
         string $httpMethod,
         string $endpoint,
         array $args = []
     ): array {
+        $httpMethod = strtolower($httpMethod);
+
         $args = array_filter($args);
+
+        $url = $this->credentials->getApiBaseUrl() . $endpoint;
+
+        if ($args && $httpMethod === 'get') {
+            $url .= '?' . http_build_query($args);
+        }
+
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Access-Token' => $this->credentials->getAccessToken(),
+        ];
+
+        $body = $httpMethod === 'get' || empty($args)
+            ? null
+            : \json_encode($args);
 
         $request = new \GuzzleHttp\Psr7\Request(
             $httpMethod,
-            $this->buildUrl($httpMethod, $endpoint, $args),
-            [
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-            ],
-            strtolower($httpMethod) === 'get' ? '' : \json_encode($args)
-        );
-
-        $response = $this->httpClient->sendRequest($request);
-
-        return $this->handleResponse($response, $request);
-    }
-
-    public function callAuthorized(
-        string $httpMethod,
-        string $endpoint,
-        array $args = []
-    ): array {
-        $args = array_filter($args);
-
-        $request = new \GuzzleHttp\Psr7\Request(
-            $httpMethod,
-            $this->buildUrl($httpMethod, $endpoint, $args),
-            [
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-                'Access-Token' => $this->credentials->getAccessToken(),
-            ],
-            strtolower($httpMethod) === 'get' ? '' : \json_encode($args)
+            $url,
+            $headers,
+            $body
         );
 
         $response = $this->httpClient->sendRequest($request);
@@ -86,16 +75,5 @@ abstract class AbstractService implements \Promopult\TikTokMarketingApi\ServiceI
         }
 
         return $decodedJson;
-    }
-
-    protected function buildUrl(string $httpMethod, string $endpoint, array $args = []): string
-    {
-        $url = $this->credentials->getApiBaseUrl() . $endpoint;
-
-        if ($args && strtolower($httpMethod) === 'get') {
-            $url .= '?' . http_build_query($args);
-        }
-
-        return $url;
     }
 }

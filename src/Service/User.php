@@ -17,7 +17,7 @@ final class User extends \Promopult\TikTokMarketingApi\AbstractService
      */
     public function info(): array
     {
-        return $this->callAuthorized(
+        return $this->requestApi(
             'GET',
             '/open_api/v1.2/user/info/'
         );

@@ -9,9 +9,9 @@ final class Advertiser extends \Promopult\TikTokMarketingApi\AbstractService
     /**
      * Getting a list of advertiser accounts.
      *
-     * @param string|null $accessToken  Authorized Access Token
-     * @param string|null $appId        The App id applied by the developer
-     * @param string|null $secret       The private key of the developer's application
+     * @param ?string $accessToken   Authorized Access Token
+     * @param ?string $appId         The App id applied by the developer
+     * @param ?string $secret        The private key of the developer's application
      *
      * @return array
      *
@@ -24,15 +24,23 @@ final class Advertiser extends \Promopult\TikTokMarketingApi\AbstractService
         ?string $appId = null,
         ?string $secret = null
     ): array {
-        return $this->callUnauthorized(
+        $query = http_build_query([
+            'access_token' => $accessToken ?: $this->credentials->getAccessToken(),
+            'app_id' => $appId ?: $this->credentials->getAppId(),
+            'secret' => $secret ?: $this->credentials->getSecret()
+        ]);
+
+        $request = new \GuzzleHttp\Psr7\Request(
             'GET',
-            '/open_api/v1.2/oauth2/advertiser/get/',
+            $this->credentials->getApiBaseUrl() . '/open_api/v1.2/oauth2/advertiser/get/?' . $query,
             [
-                'access_token' => $accessToken ?: $this->credentials->getAccessToken(),
-                'app_id' => $appId ?: $this->credentials->getAppId(),
-                'secret' => $secret ?: $this->credentials->getSecret()
+                'Accept' => 'application/json'
             ]
         );
+
+        $response = $this->httpClient->sendRequest($request);
+
+        return $this->handleResponse($response, $request);
     }
 
     /**
@@ -54,11 +62,11 @@ final class Advertiser extends \Promopult\TikTokMarketingApi\AbstractService
      */
     public function info(array $advertiserIds, array $fields)
     {
-        return $this->callAuthorized(
+        return $this->requestApi(
             'GET',
             '/open_api/v1.1/advertiser/info/',
             [
-                'advertiser_ids' => $advertiserIds,
+                'advertiser_ids' => '[' . implode(',', $advertiserIds) . ']',
                 'fields' => $fields
             ]
         );

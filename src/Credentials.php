@@ -22,16 +22,12 @@ final class Credentials implements CredentialsInterface
      * @var string
      */
     private $secret;
-    /**
-     * @var string
-     */
-    private $apiVersion;
 
     /**
      * Credentials constructor.
      *
      * @param string $accessToken
-     * @param int $appId
+     * @param string $appId
      * @param string $secret
      * @param string $apiBaseUrl
      */
@@ -42,9 +38,9 @@ final class Credentials implements CredentialsInterface
         string $apiBaseUrl = self::API_BASE_URL
     ) {
         $this->accessToken = $accessToken;
-        $this->apiBaseUrl = $apiBaseUrl;
         $this->appId = $appId;
         $this->secret = $secret;
+        $this->apiBaseUrl = $apiBaseUrl;
     }
 
     public static function build(
@@ -103,13 +99,5 @@ final class Credentials implements CredentialsInterface
     public function getSecret(): string
     {
         return $this->secret;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getApiVersion(): string
-    {
-        return $this->apiVersion;
     }
 }

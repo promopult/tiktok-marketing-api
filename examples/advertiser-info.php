@@ -15,6 +15,6 @@ $client = new \Promopult\TikTokMarketingApi\Client(
     $httpClient
 );
 
-$resp = $client->user->info();
+$resp = $client->advertiser->info([getenv('__ADVERTISER_ID__')], ['email']);
 
-print_r($resp);
+var_dump($resp);
