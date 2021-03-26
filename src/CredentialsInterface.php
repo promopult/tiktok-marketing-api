@@ -18,15 +18,5 @@ interface CredentialsInterface
     /**
      * @return string
      */
-    public function getAppId(): string;
-
-    /**
-     * @return string
-     */
-    public function getSecret(): string;
-
-    /**
-     * @return string
-     */
     public function getApiBaseUrl(): string;
 }

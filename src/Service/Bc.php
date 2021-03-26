@@ -18,13 +18,13 @@ final class Bc extends \Promopult\TikTokMarketingApi\AbstractService
      *
      * Get a List of Business Center Accounts
      *
-     * @param int $bcId         The Business Center ID, when not passed, returns the user's entire list of
+     * @param ?int $bcId        The Business Center ID, when not passed, returns the user's entire list of
      *                          Business Centers by default, and returns the specified Business Center account when
      *                          passed in.
      *
-     * @param int $page         Current number of pages, default value: 1, the value range : ≥ 1
+     * @param ?int $page        Current number of pages, default value: 1, the value range : ≥ 1
      *
-     * @param int $pageSize     Page size, default value: 10, value range: 1-50
+     * @param ?int $pageSize    Page size, default value: 10, value range: 1-50
      *
      * @return array
      *
@@ -63,63 +63,42 @@ final class Bc extends \Promopult\TikTokMarketingApi\AbstractService
         );
     }
 
+    /**
+     * Ad Account Creation
+     *
+     * @param int $bcId                 Business Center ID
+     * @param array $advertiserInfo     Ad Account information
+     * @param array $customerInfo       Business Information
+     * @param array $qualificationInfo  Qualification information
+     * @param ?array $contactInfo       Contact Information
+     * @param ?array $billingInfo       Billing information. Required if the place of registration of the ad account
+     *                                  is France or Brazil.
+     *
+     * @return array
+     *
+     * @throws \Throwable
+     *
+     * @see https://ads.tiktok.com/marketing_api/docs?id=1690131505474562
+     */
     public function advertiserCreate(
         int $bcId,
-        // advertiser_info
-        string $advertiserName,
-        string $advertiserCurrency,
-        string $advertiserTimezone,
-        // customer_info
-        string $customerCompany,
-        string $customerIndustry,
-        string $customerRestrictedArea,
-        // qualification_info
-        string $qualificationPromotionLink,
-        ?string $qualificationLicenseNo = null,
-        ?string $qualificationLicenseImageId = null,
-        ?array $qualificationImageIds = null,
-        // contact
-        ?string $contactName = null,
-        ?string $contactEmail = null,
-        ?string $contactNumber = null,
-        // billing_info
-        ?string $billingAddress = null,
-        ?string $billingTaxMap = null
+        array $advertiserInfo,
+        array $customerInfo,
+        array $qualificationInfo,
+        ?array $contactInfo,
+        ?array $billingInfo
     ): array {
-        $params = [
-            'bc_id' => $bcId,
-            'advertiser_info' => [
-                'name' => $advertiserName,
-                'currency' => $advertiserCurrency,
-                'timezone' => $advertiserTimezone,
-            ],
-            'customer_info' => [
-                'company' => $customerCompany,
-                'industry' => $customerIndustry,
-                'registered_area' => $customerRestrictedArea,
-            ],
-            'qualification_info' => [
-                'promotion_link' => $qualificationPromotionLink,
-                'license_no' => $qualificationLicenseNo,
-                'license_image_id' => $qualificationLicenseImageId,
-                'qualification_image_ids' => $qualificationImageIds
-
-            ],
-            'contact_info' => [
-                'name' => $contactName,
-                'email' => $contactEmail,
-                'number' => $contactNumber
-            ],
-            'billing_info' => [
-                'address' => $billingAddress,
-                'tax_map' => $billingTaxMap
-            ]
-        ];
-
         return $this->requestApi(
-            "POST",
+            'POST',
             '/open_api/v1.2/bc/advertiser/create/',
-            $params
+            [
+                'bc_id' => $bcId,
+                'advertiser_info' => $advertiserInfo,
+                'customer_info' => $customerInfo,
+                'qualification_info' => $qualificationInfo,
+                'contact_info' => $contactInfo,
+                'billing_info' => $billingInfo
+            ]
         );
     }
 }

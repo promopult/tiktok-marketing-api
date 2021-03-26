@@ -23,6 +23,51 @@ final class OAuth2Client
     }
 
     /**
+     * Getting a list of advertiser accounts.
+     *
+     * @param string $accessToken   Authorized Access Token
+     * @param string $appId         The App id applied by the developer
+     * @param string $secret        The private key of the developer's application
+     * @param string $apiBaseUrl
+     *
+     * @return array
+     *
+     * @throws \Psr\Http\Client\ClientExceptionInterface
+     *
+     * @see https://ads.tiktok.com/marketing_api/docs?id=100579
+     */
+    public function advertiserGet(
+        string $accessToken,
+        string $appId,
+        string $secret,
+        string $apiBaseUrl = CredentialsInterface::API_BASE_URL
+    ): array {
+        $query = http_build_query([
+            'access_token' => $accessToken,
+            'app_id' => $appId,
+            'secret' => $secret
+        ]);
+
+        $request = new \GuzzleHttp\Psr7\Request(
+            'GET',
+            $apiBaseUrl . '/open_api/v1.2/oauth2/advertiser/get/?' . $query,
+            [
+                'Accept' => 'application/json'
+            ]
+        );
+
+        $response = $this->httpClient->sendRequest($request);
+
+        $parsedBody = json_decode($response->getBody()->getContents(), true);
+
+        if (empty($parsedBody)) {
+            throw new \Promopult\TikTokMarketingApi\Exception\UnexpectedApiResponse($request, $response);
+        }
+
+        return $parsedBody;
+    }
+
+    /**
      * Get Long-term Access Token
      *
      * @param string $appId

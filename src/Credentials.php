@@ -10,61 +10,38 @@ final class Credentials implements CredentialsInterface
      * @var string
      */
     private $accessToken;
+
     /**
      * @var string
      */
     private $apiBaseUrl;
-    /**
-     * @var string
-     */
-    private $appId;
-    /**
-     * @var string
-     */
-    private $secret;
+
 
     /**
      * Credentials constructor.
      *
      * @param string $accessToken
-     * @param string $appId
-     * @param string $secret
      * @param string $apiBaseUrl
      */
     public function __construct(
         string $accessToken,
-        string $appId,
-        string $secret,
-        string $apiBaseUrl = self::API_BASE_URL
+        string $apiBaseUrl
     ) {
         $this->accessToken = $accessToken;
-        $this->appId = $appId;
-        $this->secret = $secret;
         $this->apiBaseUrl = $apiBaseUrl;
     }
 
-    public static function build(
-        string $accessToken,
-        string $appId,
-        string $secret
-    ) {
+    public static function fromAccessToken(string $accessToken): CredentialsInterface
+    {
         return new self(
             $accessToken,
-            $appId,
-            $secret,
             self::API_BASE_URL
         );
     }
 
-    public static function buildForSandbox(
-        string $accessToken,
-        string $appId,
-        string $secret
-    ) {
+    public static function fromAccessTokenSandbox(string $accessToken): CredentialsInterface {
         return new self(
             $accessToken,
-            $appId,
-            $secret,
             self::API_BASE_URL_SANDBOX
         );
     }
@@ -83,21 +60,5 @@ final class Credentials implements CredentialsInterface
     public function getApiBaseUrl(): string
     {
         return $this->apiBaseUrl;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAppId(): string
-    {
-        return $this->appId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSecret(): string
-    {
-        return $this->secret;
     }
 }

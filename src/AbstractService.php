@@ -36,7 +36,7 @@ abstract class AbstractService implements \Promopult\TikTokMarketingApi\ServiceI
         $url = $this->credentials->getApiBaseUrl() . $endpoint;
 
         if ($args && $httpMethod === 'get') {
-            $url .= '?' . http_build_query($args);
+            $url .= '?' . $this->prepareGetParams($args);
         }
 
         $headers = [
@@ -75,5 +75,22 @@ abstract class AbstractService implements \Promopult\TikTokMarketingApi\ServiceI
         }
 
         return $decodedJson;
+    }
+
+    protected function prepareGetParams(array $args): string
+    {
+        $formedArgs = [];
+
+        foreach ($args as $arg => $value) {
+            if (is_scalar($value)) {
+                $formedArgs[$arg] = $value;
+            }
+
+            if (is_array($value)) {
+                $formedArgs[$arg] = \json_encode(array_filter($value));
+            }
+        }
+
+        return http_build_query($formedArgs);
     }
 }
