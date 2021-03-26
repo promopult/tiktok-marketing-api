@@ -9,7 +9,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
     /**
      * Getting Campaigns
      *
-     * @param string $advertiserId      Advertiser ID
+     * @param int $advertiserId         Advertiser ID
      * @param ?array $fields            Return field, optional values "campaign_id", "campaign_name", "advertiser_id",
      *                                  "budget", "budget_mode", "status", "opt_status", "objective", "objective_type",
      *                                  "create_time", "modify_time", "is_new_structure", "split_test_variable".
@@ -25,7 +25,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
      * @see https://ads.tiktok.com/marketing_api/docs?id=100528
      */
     public function get(
-        string $advertiserId,
+        int $advertiserId,
         ?array $fields = null,
         ?array $filtering = null,
         ?int $page = null,
@@ -45,7 +45,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
     /**
      * Creating a Campaign
      *
-     * @param string $advertiserId          Advertiser ID
+     * @param int $advertiserId             Advertiser ID
      * @param string $campaignName          Campaign name. It can contain up to 512 characters. Emoji is not supported.
      * @param string $objectiveType         Advertising objective.
      * @param string $budgetMode            Budget type.
@@ -59,7 +59,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
      * @see https://ads.tiktok.com/marketing_api/docs?id=100528
      */
     public function create(
-        string $advertiserId,
+        int $advertiserId,
         string $campaignName,
         string $objectiveType,
         string $budgetMode,
@@ -84,7 +84,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
     /**
      * Creating a Campaign
      *
-     * @param string $advertiserId          Advertiser ID
+     * @param int $advertiserId             Advertiser ID
      * @param string $campaignName          Campaign name. It can contain up to 512 characters. Emoji is not supported.
      * @param string $objectiveType         Advertising objective.
      * @param string $budgetMode            Budget type.
@@ -100,7 +100,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
      * @see https://ads.tiktok.com/marketing_api/docs?id=100528
      */
     public function update(
-        string $advertiserId,
+        int $advertiserId,
         string $campaignName,
         string $objectiveType,
         string $budgetMode,
