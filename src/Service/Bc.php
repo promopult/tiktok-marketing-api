@@ -85,8 +85,8 @@ final class Bc extends \Promopult\TikTokMarketingApi\AbstractService
         array $advertiserInfo,
         array $customerInfo,
         array $qualificationInfo,
-        ?array $contactInfo,
-        ?array $billingInfo
+        ?array $contactInfo = null,
+        ?array $billingInfo = null
     ): array {
         return $this->requestApi(
             'POST',

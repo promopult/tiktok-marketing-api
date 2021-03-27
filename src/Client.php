@@ -9,9 +9,10 @@ namespace Promopult\TikTokMarketingApi;
  *
  * @property Service\AdGroup $adGroup
  * @property Service\Advertiser $advertiser
- * @property Service\User $user
  * @property Service\Bc $bc
  * @property Service\Campaign $campaign
+ * @property Service\Report $report
+ * @property Service\User $user
  *
  * @author Dmitry Gladyshev <gladyshevd@icloud.com>
  */
