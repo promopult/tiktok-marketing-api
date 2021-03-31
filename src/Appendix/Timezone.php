@@ -9,7 +9,6 @@ final class Timezone
     public static function getTimezones(): array
     {
         return [
-            ["            Code", "Time"],
             ["Africa/Accra", "UTC 00:00"],
             ["Africa/Cairo", "UTC 02:00"],
             ["Africa/Casablanca", "UTC 00:00"],
