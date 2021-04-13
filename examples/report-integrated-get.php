@@ -13,11 +13,18 @@ $client = new \Promopult\TikTokMarketingApi\Client(
     $httpClient
 );
 
-$resp = $client->bc->transfer(
-    getenv('__BC_ID__'),
+$now = new DateTimeImmutable('now');
+
+$resp = $client->report->integratedGet(
     getenv('__ADVERTISER_ID__'),
-    'RECHARGE',
-    1.00
+    'BASIC',
+    ['campaign_id', 'stat_time_day'],
+    'AUCTION_CAMPAIGN',
+    'AUCTION',
+    ['impressions', 'clicks', 'spend'],
+    false,
+    $now->sub(new DateInterval('P30D'))->format('Y-m-d'),
+    $now->format('Y-m-d')
 );
 
 print_r($resp);

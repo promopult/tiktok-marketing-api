@@ -37,15 +37,15 @@ final class Report extends \Promopult\TikTokMarketingApi\AbstractService
      */
     public function integratedGet(
         int $advertiserId,
-        string $serviceType,
         string $reportType,
         array $dimensions,
-        array $metrics,
+        ?string $dataLevel = null,
+        ?string $serviceType =  null,
+        ?array $metrics = null,
         bool $lifetime = false,
         ?string $startDate = null,
         ?string $endDate = null,
         ?array $filters = null,
-        ?string $dataLevel = null,
         ?string $orderField = null,
         ?string $orderType = null,
         ?int $page = null,
