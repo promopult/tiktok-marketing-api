@@ -24,7 +24,12 @@ $resp = $client->report->integratedGet(
     ['impressions', 'clicks', 'spend'],
     false,
     $now->sub(new DateInterval('P30D'))->format('Y-m-d'),
-    $now->format('Y-m-d')
+    $now->format('Y-m-d'),
+    null,
+    null,
+    null,
+    1,
+    1000
 );
 
 print_r($resp);
