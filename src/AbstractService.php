@@ -67,7 +67,7 @@ abstract class AbstractService implements \Promopult\TikTokMarketingApi\ServiceI
     ): array {
         $decodedJson = \json_decode($response->getBody()->getContents(), true);
 
-        if (empty($decodedJson['code'])) {
+        if (!isset($decodedJson['code'])) {
             throw new \Promopult\TikTokMarketingApi\Exception\MalformedResponse(
                 $request,
                 $response
