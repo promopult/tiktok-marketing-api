@@ -61,7 +61,7 @@ final class OAuth2Client
         $parsedBody = json_decode($response->getBody()->getContents(), true);
 
         if (empty($parsedBody)) {
-            throw new \Promopult\TikTokMarketingApi\Exception\UnexpectedApiResponse($request, $response);
+            throw new \Promopult\TikTokMarketingApi\Exception\MalformedResponse($request, $response);
         }
 
         return $parsedBody;
@@ -103,7 +103,7 @@ final class OAuth2Client
         $accessToken = json_decode($response->getBody()->getContents(), true);
 
         if (empty($accessToken)) {
-            throw new \Promopult\TikTokMarketingApi\Exception\UnexpectedApiResponse($request, $response);
+            throw new \Promopult\TikTokMarketingApi\Exception\MalformedResponse($request, $response);
         }
 
         return $accessToken;

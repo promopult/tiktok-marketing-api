@@ -2,7 +2,7 @@
 
 namespace Promopult\TikTokMarketingApi\Exception;
 
-class UnexpectedApiResponse extends \RuntimeException
+class ErrorResponse extends \RuntimeException
 {
     /**
      * @var \Psr\Http\Message\RequestInterface
@@ -15,10 +15,10 @@ class UnexpectedApiResponse extends \RuntimeException
     private $response;
 
     public function __construct(
+        int $code,
+        string $message,
         \Psr\Http\Message\RequestInterface $request,
         \Psr\Http\Message\ResponseInterface $response,
-        $message = 'Unexpected Tik-Tok API response.',
-        $code = 0,
         \Throwable $previous = null
     ) {
         parent::__construct($message, $code, $previous);
