@@ -13,6 +13,8 @@ $client = new \Promopult\TikTokMarketingApi\Client(
     $httpClient
 );
 
-$resp = $client->advertiser->info([getenv('__ADVERTISER_ID__')], ['email', 'balance']);
+$resp = $client->bc->balanceGet(
+    getenv('__BC_ID__')
+);
 
-var_dump($resp);
+print_r($resp);
