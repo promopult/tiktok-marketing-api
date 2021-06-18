@@ -37,7 +37,10 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
             '/open_api/v1.2/campaign/get/',
             [
                 'advertiser_id' => $advertiserId,
-                'fields' => $fields
+                'fields' => $fields,
+                'filtering' => $filtering,
+                'page' => $page,
+                'page_size' => $pageSize
             ]
         );
     }
