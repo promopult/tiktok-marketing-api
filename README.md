@@ -1,6 +1,8 @@
 # TikTok Marketing API PHP client library
 
-Convenient full-featured wrapper for [TikTok Marketing API](https://ads.tiktok.com/marketing_api/docs).
+/!\ WIP: Not ready for production.
+
+Convenient wrapper for [TikTok Marketing API](https://ads.tiktok.com/marketing_api/docs).
 
 
 [![Build Status](https://travis-ci.org/promopult/tiktok-marketing-api.svg?branch=master)](https://travis-ci.org/promopult/tiktok-marketing-api)
