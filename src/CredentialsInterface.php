@@ -7,7 +7,7 @@ namespace Promopult\TikTokMarketingApi;
 interface CredentialsInterface
 {
     /* Base URLs */
-    public const API_BASE_URL = 'https://ads.tiktok.com';
+    public const API_BASE_URL = 'https://business-api.tiktok.com';
     public const API_BASE_URL_SANDBOX = 'https://sandbox-ads.tiktok.com';
 
     /**
