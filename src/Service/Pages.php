@@ -27,16 +27,16 @@ final class Pages extends \Promopult\TikTokMarketingApi\AbstractService
      */
     public function get(
         int $advertiserId,
-        ?string $status,
-        ?string $title,
-        ?array $updateTimeRange,
-        ?string $businessType,
-        ?int $page,
-        ?int $pageSize
+        ?string $status = null,
+        ?string $title = null,
+        ?array $updateTimeRange = null,
+        ?string $businessType = null,
+        ?int $page = null,
+        ?int $pageSize = null
     ): array {
         return $this->requestApi(
             'GET',
-            'https://ads.tiktok.com/open_api/v1.2/pages/get/',
+            '/open_api/v1.2/pages/get/',
             [
                 'advertiser_id' => $advertiserId,
                 'page' => $page,

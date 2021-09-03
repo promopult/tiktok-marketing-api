@@ -108,7 +108,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
         ?int $pageId = null
     ): array {
         return $this->requestApi(
-            'POST',
+            'GET',
             '/open_api/v1.2/pages/leads/task/',
             [
                 'advertiser_id' => $advertiserId,
@@ -137,7 +137,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
         int $taskId
     ): array {
         return $this->requestApi(
-            'POST',
+            'GET',
             '/open_api/v1.2/pages/leads/task/',
             [
                 'advertiser_id' => $advertiserId,

@@ -7,6 +7,7 @@ namespace Promopult\TikTokMarketingApi;
 /**
  * Class Client
  *
+ * @property Service\Ad $ad
  * @property Service\AdGroup $adGroup
  * @property Service\Advertiser $advertiser
  * @property Service\Bc $bc
