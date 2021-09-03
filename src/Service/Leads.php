@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Promopult\TikTokMarketingApi\Service;
 
+use Throwable;
+
 final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
 {
     /**
@@ -16,7 +18,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
      * @param int $pageId
      * @return array
      *
-     * @throws \Throwable
+     * @throws Throwable
      *
      * @see https://ads.tiktok.com/marketing_api/docs?id=1701890943400962
      */
@@ -43,7 +45,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
      * @param int $pageId
      * @return array
      *
-     * @throws \Throwable
+     * @throws Throwable
      *
      * @see https://ads.tiktok.com/marketing_api/docs?id=1709486980307969
      */
@@ -70,7 +72,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
      * @param int $leadId
      * @return array
      *
-     * @throws \Throwable
+     * @throws Throwable
      *
      * @see https://ads.tiktok.com/marketing_api/docs?id=1709487026425858
      */
@@ -96,7 +98,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
      * @param int|null $pageId
      * @return array
      *
-     * @throws \Throwable
+     * @throws Throwable
      *
      * @see https://ads.tiktok.com/marketing_api/docs?id=1701890942344193
      */
@@ -126,7 +128,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
      * @param int $taskId
      * @return array
      *
-     * @throws \Throwable
+     * @throws Throwable
      *
      * @see https://ads.tiktok.com/marketing_api/docs?id=1701890942344193
      */
@@ -151,7 +153,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
      * @param int $taskId
      * @return array | string
      *
-     * @throws \Throwable
+     * @throws Throwable
      *
      * @see https://ads.tiktok.com/marketing_api/docs?id=1709486183758850
      */
@@ -212,14 +214,14 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
      * in multiple subscriptions. Subscription status changes of a page in one subscription do not affect the
      * subscription status of this page in another subscription.
      *
-     * @param string $appId
+     * @param int $appId
      * @param string $secret
      * @param array $subscriptionDetail
      * @param string $url
      * @param string $object
      * @return array
      *
-     * @throws \Throwable
+     * @throws Throwable
      *
      * @see https://ads.tiktok.com/marketing_api/docs?id=1701890942854146
      */
@@ -251,7 +253,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
      * @param int $subscriptionId
      * @return array
      *
-     * @throws \Throwable
+     * @throws Throwable
      *
      * @see https://ads.tiktok.com/marketing_api/docs?id=1709486460752897
      */

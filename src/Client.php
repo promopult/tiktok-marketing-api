@@ -14,8 +14,8 @@ namespace Promopult\TikTokMarketingApi;
  * @property Service\Report $report
  * @property Service\Tools $tools
  * @property Service\User $user
- *
- * @author Dmitry Gladyshev <gladyshevd@icloud.com>
+ * @property Service\Leads $leads
+ * @property Service\Pages $pages
  */
 final class Client implements \Promopult\TikTokMarketingApi\ServiceFactoryInterface
 {
