@@ -198,7 +198,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
             );
         }
 
-        return $decodedJson;
+        return (string) $response->getBody();
     }
 
     /**
