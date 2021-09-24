@@ -27,10 +27,8 @@ or
 See [examples](/examples) folder.
 
 ```php
-$credentials = \Promopult\TikTokMarketingApi\Credentials::build(
-    getenv('__ACCESS_TOKEN__'),
-    getenv('__APP_ID__'),
-    getenv('__SECRET__')
+$credentials = \Promopult\TikTokMarketingApi\Credentials::fromAccessToken(
+    getenv('__ACCESS_TOKEN__')
 );
 
 // Any PSR-18 HTTP-client
