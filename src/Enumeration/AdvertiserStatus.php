@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Promopult\TikTokMarketingApi\Appendix;
+namespace Promopult\TikTokMarketingApi\Enumeration;
 
 final class AdvertiserStatus
 {
