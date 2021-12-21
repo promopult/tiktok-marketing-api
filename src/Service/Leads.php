@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Promopult\TikTokMarketingApi\Service;
 
 use Throwable;
+use function json_decode;
 
 final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
 {
@@ -151,7 +152,8 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
      *
      * @param int $advertiserId
      * @param int $taskId
-     * @return array | string
+     *
+     * @return string
      *
      * @throws Throwable
      *
@@ -160,7 +162,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
     public function downloadLeads(
         int $advertiserId,
         int $taskId
-    ) {
+    ): string {
         $url = $this->credentials->getApiBaseUrl()
             . '/open_api/v1.2/pages/leads/task/download/'
             . '?' . $this->prepareGetParams([
@@ -181,9 +183,12 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
 
         $response = $this->httpClient->sendRequest($request);
 
-        $decodedJson = \json_decode(
+        /** @var array $decodedJson */
+        $decodedJson = json_decode(
             (string) $response->getBody(),
-            true
+            true,
+            512,
+            JSON_THROW_ON_ERROR
         );
 
         if (
@@ -192,7 +197,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
         ) {
             throw new \Promopult\TikTokMarketingApi\Exception\ErrorResponse(
                 (int) $decodedJson['code'],
-                $decodedJson['message'],
+                (string) $decodedJson['message'],
                 $request,
                 $response
             );
@@ -269,6 +274,39 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
                 'app_id' => $appId,
                 'secret' => $secret,
                 'subscription_id' => $subscriptionId,
+            ]
+        );
+    }
+
+    /**
+     * Get subscriptions
+     *
+     * @param int $appId            # The APP ID
+     * @param string $secret        # Secret
+     * @param string $object        # The object that you want to subscribe to. Use LEAD for this endpoint
+     * @param int|null $page        # The current page number. Default value: 1. Value range: ≥ 1
+     * @param int|null $pageSize    # The page size. Default value:10. Value range: 1-1000
+     *
+     * @return array
+     *
+     * @throws Throwable
+     */
+    public function getSubscriptions(
+        int $appId,
+        string $secret,
+        string $object = 'LEAD',
+        ?int $page = null,
+        ?int $pageSize = null
+    ): array {
+        return $this->requestApi(
+            'GET',
+            '/open_api/v1.2/subscription/get/',
+            [
+                'app_id' => $appId,
+                'secret' => $secret,
+                'object' => $object,
+                'page' => $page,
+                'page_size' => $pageSize
             ]
         );
     }

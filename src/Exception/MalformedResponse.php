@@ -2,23 +2,19 @@
 
 namespace Promopult\TikTokMarketingApi\Exception;
 
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
+
 class MalformedResponse extends \RuntimeException
 {
-    /**
-     * @var \Psr\Http\Message\RequestInterface
-     */
-    private $request;
-
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
+    private RequestInterface $request;
+    private ResponseInterface $response;
 
     public function __construct(
-        \Psr\Http\Message\RequestInterface $request,
-        \Psr\Http\Message\ResponseInterface $response,
-        $message = 'Unexpected Tik-Tok API response.',
-        $code = 0,
+        RequestInterface $request,
+        ResponseInterface $response,
+        string $message = 'Unexpected Tik-Tok API response.',
+        int $code = 0,
         \Throwable $previous = null
     ) {
         parent::__construct($message, $code, $previous);
@@ -26,12 +22,12 @@ class MalformedResponse extends \RuntimeException
         $this->response = $response;
     }
 
-    public function getRequest(): \Psr\Http\Message\RequestInterface
+    public function getRequest(): RequestInterface
     {
         return $this->request;
     }
 
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): ResponseInterface
     {
         return $this->response;
     }

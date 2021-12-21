@@ -39,7 +39,8 @@ final class Credentials implements CredentialsInterface
         );
     }
 
-    public static function fromAccessTokenSandbox(string $accessToken): CredentialsInterface {
+    public static function fromAccessTokenSandbox(string $accessToken): CredentialsInterface
+    {
         return new self(
             $accessToken,
             self::API_BASE_URL_SANDBOX

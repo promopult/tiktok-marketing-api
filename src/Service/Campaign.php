@@ -30,8 +30,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
         ?array $filtering = null,
         ?int $page = null,
         ?int $pageSize = null
-    ): array
-    {
+    ): array {
         return $this->requestApi(
             'GET',
             '/open_api/v1.2/campaign/get/',
@@ -68,8 +67,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
         string $budgetMode,
         ?float $budget = null,
         ?string $splitTestVariable = null
-    ): array
-    {
+    ): array {
         return $this->requestApi(
             'POST',
             '/open_api/v1.2/campaign/create/',
@@ -108,8 +106,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
         string $objectiveType,
         string $budgetMode,
         ?float $budget = null
-    ): array
-    {
+    ): array {
         return $this->requestApi(
             'POST',
             '/open_api/v1.2/campaign/update/',

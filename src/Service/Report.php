@@ -38,7 +38,7 @@ final class Report extends \Promopult\TikTokMarketingApi\AbstractService
         string $reportType,
         array $dimensions,
         ?string $dataLevel = null,
-        ?string $serviceType =  null,
+        ?string $serviceType = null,
         ?array $metrics = null,
         bool $lifetime = false,
         ?string $startDate = null,
