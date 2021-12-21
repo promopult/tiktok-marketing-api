@@ -1,4 +1,4 @@
-check: cs psalm test
+check-all: cs psalm test
 
 cs:
 	composer cs-check
