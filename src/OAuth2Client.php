@@ -10,6 +10,8 @@ use Psr\Http\Client\ClientInterface;
 
 final class OAuth2Client
 {
+    use RequestSenderTrait;
+
     private ClientInterface $httpClient;
 
     /**
@@ -57,7 +59,7 @@ final class OAuth2Client
             ]
         );
 
-        $response = $this->httpClient->sendRequest($request);
+        $response = $this->sendRequest($request);
 
         /** @var array $parsedBody */
         $parsedBody = json_decode(
@@ -104,7 +106,7 @@ final class OAuth2Client
             ])
         );
 
-        $response = $this->httpClient->sendRequest($request);
+        $response = $this->sendRequest($request);
 
         /** @var array $accessToken */
         $accessToken = json_decode($response->getBody()->getContents(), true, JSON_THROW_ON_ERROR);
@@ -131,7 +133,6 @@ final class OAuth2Client
      * @return string
      *
      * @see https://ads.tiktok.com/marketing_api/docs?id=100648
-     * @see
      */
     public static function createAuthorizationUrl(
         string $appId,

@@ -6,10 +6,10 @@ namespace Promopult\TikTokMarketingApi\Appendix;
 
 final class RegionIDs
 {
-    public const TYPE_DMA = "DMA";
-    public const TYPE_CITIES = "cities";
-    public const TYPE_COUNTRIES = "countries";
-    public const TYPE_PROVINCES = "provinces";
+    public const TYPE_DMA = 'DMA';
+    public const TYPE_CITIES = 'cities';
+    public const TYPE_COUNTRIES = 'countries';
+    public const TYPE_PROVINCES = 'provinces';
 
     public const JSON = [
         'DMA' => [
@@ -1480,16 +1480,12 @@ final class RegionIDs
     ];
 
     /**
-     * Кешированный списко регионов. Ключ Id
-     *
-     * @var array
+     * @var array<int,array>
      */
-    private static $region_cache = [];
+    private static array $region_cache = [];
 
     /**
-     * Возвращает список всех регионов
-     *
-     * @return array
+     * @return array<int,array>
      */
     public static function getRegionsList(): array
     {
@@ -1521,7 +1517,11 @@ final class RegionIDs
 
         $ids = array_column($items, 'id');
         $items = array_combine($ids, $items);
-        return $items ?? [];
+
+        return $items === false
+            ? []
+            : $items
+        ;
     }
 
     /**
@@ -1536,8 +1536,13 @@ final class RegionIDs
         if ($level < 1 || $level > 3) {
             return [];
         }
+
         $list = self::getRegionsList();
+
         return array_filter($list, function ($region) use ($level) {
+            /**
+             * @psalm-suppress MixedArrayAccess
+             */
             return ($region['level'] ?? null) == $level;
         });
     }
@@ -1553,6 +1558,9 @@ final class RegionIDs
     {
         $list = self::getRegionsList();
         return array_filter($list, function ($region) use ($parent_id) {
+            /**
+             * @psalm-suppress MixedArrayAccess
+             */
             return ($region['parent_id'] ?? null) == $parent_id;
         });
     }
@@ -1562,11 +1570,12 @@ final class RegionIDs
      *
      * @param int $id Id региона
      *
-     * @return array|null
+     * @return ?array
      */
     public static function getRegionById(int $id): ?array
     {
         self::getRegionsList();
+
         return self::$region_cache[$id] ?? null;
     }
 
@@ -1605,13 +1614,20 @@ final class RegionIDs
         $region = self::getRegionById($id);
         $type = self::getRegionType($id);
 
+        if ($region === null || $type === null) {
+            throw new \InvalidArgumentException('Invalid region ID.');
+        }
+
         $tree = [$type => $region];
 
         if (isset($region['parent_id'])) {
+            /**
+             * @psalm-suppress MixedArgument
+             */
             $tree = array_merge($tree, self::getRegionTree($region['parent_id']));
         }
 
-        uasort($tree, function ($a, $b) {
+        uasort($tree, function (array $a, array $b) {
             if ($a['level'] == $b['level']) {
                 return 0;
             }

@@ -5,10 +5,16 @@ declare(strict_types=1);
 namespace Promopult\TikTokMarketingApi;
 
 use GuzzleHttp\Psr7\Request;
+use Promopult\TikTokMarketingApi\Exception\ErrorResponse;
+use Promopult\TikTokMarketingApi\Exception\MalformedResponse;
 use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 abstract class AbstractService implements ServiceInterface
 {
+    use RequestSenderTrait;
+
     protected CredentialsInterface $credentials;
     protected ClientInterface $httpClient;
 
@@ -55,7 +61,7 @@ abstract class AbstractService implements ServiceInterface
             $body
         );
 
-        $response = $this->httpClient->sendRequest($request);
+        $response = $this->sendRequest($request);
 
         return $this->handleResponse($response, $request);
     }
@@ -64,8 +70,8 @@ abstract class AbstractService implements ServiceInterface
      * @throws \JsonException
      */
     protected function handleResponse(
-        \Psr\Http\Message\ResponseInterface $response,
-        \Psr\Http\Message\RequestInterface $request
+        ResponseInterface $response,
+        RequestInterface $request
     ): array {
         /** @var array $decodedJson */
         $decodedJson = \json_decode(
@@ -76,14 +82,14 @@ abstract class AbstractService implements ServiceInterface
         );
 
         if (!isset($decodedJson['code'])) {
-            throw new \Promopult\TikTokMarketingApi\Exception\MalformedResponse(
+            throw new MalformedResponse(
                 $request,
                 $response
             );
         }
 
         if ($decodedJson['code'] != 0) {
-            throw new \Promopult\TikTokMarketingApi\Exception\ErrorResponse(
+            throw new ErrorResponse(
                 (int) $decodedJson['code'],
                 (string) ($decodedJson['message'] ?? 'Unknown error.'),
                 $request,
@@ -98,7 +104,9 @@ abstract class AbstractService implements ServiceInterface
     {
         $formedArgs = [];
 
-        /** @var mixed $value */
+        /**
+         * @psalm-suppress MixedAssignment
+         */
         foreach ($args as $arg => $value) {
             if (is_scalar($value)) {
                 $formedArgs[$arg] = $value;

@@ -6,16 +6,8 @@ namespace Promopult\TikTokMarketingApi;
 
 final class Credentials implements CredentialsInterface
 {
-    /**
-     * @var string
-     */
-    private $accessToken;
-
-    /**
-     * @var string
-     */
-    private $apiBaseUrl;
-
+    private string $accessToken;
+    private string $apiBaseUrl;
 
     /**
      * Credentials constructor.
@@ -47,17 +39,11 @@ final class Credentials implements CredentialsInterface
         );
     }
 
-    /**
-     * @return string
-     */
     public function getAccessToken(): string
     {
         return $this->accessToken;
     }
 
-    /**
-     * @return string
-     */
     public function getApiBaseUrl(): string
     {
         return $this->apiBaseUrl;

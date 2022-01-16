@@ -9,7 +9,7 @@ interface ServiceFactoryInterface
     /**
      * @param string $serviceName
      *
-     * @return \Promopult\TikTokMarketingApi\ServiceInterface
+     * @return ServiceInterface
      */
-    public function createService(string $serviceName): \Promopult\TikTokMarketingApi\ServiceInterface;
+    public function createService(string $serviceName): ServiceInterface;
 }

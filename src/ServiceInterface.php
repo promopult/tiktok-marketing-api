@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Promopult\TikTokMarketingApi;
 
+use Throwable;
+
 interface ServiceInterface
 {
     /**
@@ -13,7 +15,7 @@ interface ServiceInterface
      *
      * @return array
      *
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function requestApi(string $httpMethod, string $endpoint, array $args = []): array;
 }

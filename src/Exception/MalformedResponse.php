@@ -2,6 +2,7 @@
 
 namespace Promopult\TikTokMarketingApi\Exception;
 
+use GuzzleHttp\Psr7\Message;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -34,20 +35,20 @@ class MalformedResponse extends \RuntimeException
 
     public function getResponseAsString(): string
     {
-        return \GuzzleHttp\Psr7\Message::toString($this->response);
+        return Message::toString($this->response);
     }
 
     public function getRequestAsString(): string
     {
-        return \GuzzleHttp\Psr7\Message::toString($this->request);
+        return Message::toString($this->request);
     }
 
     public function __toString(): string
     {
         return parent::__toString() . PHP_EOL
             . 'Http log:' . PHP_EOL
-            . '>>>' . $this->getRequestAsString() . PHP_EOL
-            . '<<<' . $this->getResponseAsString()
+            . '>>>' . PHP_EOL . $this->getRequestAsString() . PHP_EOL
+            . '<<<' . PHP_EOL . $this->getResponseAsString()
         ;
     }
 }

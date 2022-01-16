@@ -2,23 +2,20 @@
 
 namespace Promopult\TikTokMarketingApi\Exception;
 
+use GuzzleHttp\Psr7\Message;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
+
 class ErrorResponse extends \RuntimeException
 {
-    /**
-     * @var \Psr\Http\Message\RequestInterface
-     */
-    private $request;
-
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
+    private RequestInterface $request;
+    private ResponseInterface $response;
 
     public function __construct(
         int $code,
         string $message,
-        \Psr\Http\Message\RequestInterface $request,
-        \Psr\Http\Message\ResponseInterface $response,
+        RequestInterface $request,
+        ResponseInterface $response,
         \Throwable $previous = null
     ) {
         parent::__construct($message, $code, $previous);
@@ -26,32 +23,32 @@ class ErrorResponse extends \RuntimeException
         $this->response = $response;
     }
 
-    public function getRequest(): \Psr\Http\Message\RequestInterface
+    public function getRequest(): RequestInterface
     {
         return $this->request;
     }
 
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): ResponseInterface
     {
         return $this->response;
     }
 
     public function getResponseAsString(): string
     {
-        return \GuzzleHttp\Psr7\Message::toString($this->response);
+        return Message::toString($this->response);
     }
 
     public function getRequestAsString(): string
     {
-        return \GuzzleHttp\Psr7\Message::toString($this->request);
+        return Message::toString($this->request);
     }
 
     public function __toString(): string
     {
         return parent::__toString() . PHP_EOL
             . 'Http log:' . PHP_EOL
-            . '>>>' . $this->getRequestAsString() . PHP_EOL
-            . '<<<' . $this->getResponseAsString()
+            . '>>>' . PHP_EOL . $this->getRequestAsString() . PHP_EOL
+            . '<<<' . PHP_EOL . $this->getResponseAsString()
         ;
     }
 }
