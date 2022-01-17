@@ -19,6 +19,9 @@ use Psr\Http\Client\ClientInterface;
  * @property Service\User $user
  * @property Service\Leads $leads
  * @property Service\Pages $pages
+ * @property Service\Creatives $creatives
+ * @property Service\Images $images
+ * @property Service\Video $video
  */
 final class Client implements ServiceFactoryInterface
 {
