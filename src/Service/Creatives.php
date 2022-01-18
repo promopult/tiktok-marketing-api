@@ -17,7 +17,7 @@ final class Creatives extends AbstractService
      * @param int $advertiserId         Advertiser ID
      * @param string $materialType      Material type. Optional value: VIDEO, IMAGE
      * @param array $infoFields         Use to specify whether to query all data
-     * @param array $metricFields       The metrics or dimension data that you need
+     * @param array $metricsFields      The metrics or dimension data that you need
      * @param string|null $startDate    Start time, closed interval. Format such as: 2020-01-01 (advertiser time zone)
      * @param string|null $endDate      End time, closed interval. Format such as: 2020-01-01 (advertiser time zone)
      * @param bool|null $lifetime       Use to specify whether to query all data. If so, you do not need to specify
@@ -39,7 +39,7 @@ final class Creatives extends AbstractService
         int $advertiserId,
         string $materialType,
         array $infoFields,
-        array $metricFields,
+        array $metricsFields,
         ?string $startDate,
         ?string $endDate,
         ?bool $lifetime = null,
@@ -56,7 +56,7 @@ final class Creatives extends AbstractService
                 'advertiser_id' => $advertiserId,
                 'material_type' => $materialType,
                 'info_fields' => $infoFields,
-                'metric_fields' => $metricFields,
+                'metrics_fields' => $metricsFields,
                 'lifetime' => $lifetime,
                 'start_date' => $startDate,
                 'end_date' => $endDate,
