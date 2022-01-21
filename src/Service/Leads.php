@@ -15,16 +15,19 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
      * After the subscription, you can use the endpoints below to perform an end-to-end testing for leads generation,
      * and clear the testing lead.
      *
-     * @param int $advertiserId
-     * @param int $pageId
+     * @param ?int $advertiserId    If the instant form and the generated leads are under an ad account, you must
+     *                              specify the advertiser ID.
+     * @param ?int $libraryId       If the instant form and the generated leads are under a Business Center, you must
+     *                              specify the ID of the form library that contains the instant form and leads.
+     * @param int $pageId           The ID of the instant form.
      * @return array
      *
      * @throws Throwable
-     *
      * @see https://ads.tiktok.com/marketing_api/docs?id=1701890943400962
      */
     public function createTestLead(
-        int $advertiserId,
+        ?int $advertiserId,
+        ?int $libraryId,
         int $pageId
     ): array {
         return $this->requestApi(
@@ -32,6 +35,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
             '/open_api/v1.2/pages/leads/mock/create/',
             [
                 'advertiser_id' => $advertiserId,
+                'library_id' => $libraryId,
                 'page_id' => $pageId
             ]
         );
@@ -42,16 +46,20 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
      *
      * You can use this endpoint to get a test lead.
      *
-     * @param int $advertiserId
-     * @param int $pageId
+     * @param ?int $advertiserId    If the instant form and the generated leads are under an ad account, you must
+     *                              specify the advertiser ID.
+     * @param ?int $libraryId       If the instant form and the generated leads are under a Business Center, you must
+     *                              specify the ID of the form library that contains the instant form and leads.
+     * @param int $pageId           The ID of the instant form.
+     *
      * @return array
      *
      * @throws Throwable
-     *
      * @see https://ads.tiktok.com/marketing_api/docs?id=1709486980307969
      */
     public function getTestLeads(
-        int $advertiserId,
+        ?int $advertiserId,
+        ?int $libraryId,
         int $pageId
     ): array {
         return $this->requestApi(
@@ -59,6 +67,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
             '/open_api/v1.2/pages/leads/mock/get/',
             [
                 'advertiser_id' => $advertiserId,
+                'library_id' => $libraryId,
                 'page_id' => $pageId
             ]
         );
@@ -186,9 +195,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
         /** @var array $decodedJson */
         $decodedJson = json_decode(
             (string) $response->getBody(),
-            true,
-            512,
-            JSON_THROW_ON_ERROR
+            true
         );
 
         if (
