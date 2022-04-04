@@ -190,7 +190,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
             null
         );
 
-        $response = $this->httpClient->sendRequest($request);
+        $response = $this->sendRequest($request);
 
         /** @var array $decodedJson */
         $decodedJson = json_decode(
