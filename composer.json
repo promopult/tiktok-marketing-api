@@ -15,6 +15,12 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/techworkspulse/tiktok-marketing-api"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
