@@ -27,7 +27,7 @@ final class Advertiser extends \Promopult\TikTokMarketingApi\AbstractService
     {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/advertiser/info/',
+            '/open_api/v1.3/advertiser/info/',
             [
                 'advertiser_ids' => $advertiserIds,
                 'fields' => $fields

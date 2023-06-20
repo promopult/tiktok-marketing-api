@@ -19,7 +19,7 @@ final class User extends \Promopult\TikTokMarketingApi\AbstractService
     {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/user/info/'
+            '/open_api/v1.3/user/info/'
         );
     }
 }

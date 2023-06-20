@@ -33,7 +33,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/campaign/get/',
+            '/open_api/v1.3/campaign/get/',
             [
                 'advertiser_id' => $advertiserId,
                 'fields' => $fields,
@@ -70,7 +70,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'POST',
-            '/open_api/v1.2/campaign/create/',
+            '/open_api/v1.3/campaign/create/',
             [
                 'advertiser_id' => $advertiserId,
                 'budget' => $budget,
@@ -109,7 +109,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'POST',
-            '/open_api/v1.2/campaign/update/',
+            '/open_api/v1.3/campaign/update/',
             [
                 'advertiser_id' => $advertiserId,
                 'budget' => $budget,
@@ -137,7 +137,7 @@ final class Campaign extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'POST',
-            '/open_api/v1.2/campaign/update/status/',
+            '/open_api/v1.3/campaign/update/status/',
             [
                 'advertiser_id' => $advertiserId,
                 'campaign_ids' => $campaignIds,

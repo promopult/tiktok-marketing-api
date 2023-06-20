@@ -19,7 +19,7 @@ final class Tools extends \Promopult\TikTokMarketingApi\AbstractService
     {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/tools/language/',
+            '/open_api/v1.3/tool/language/',
             [
                 'advertiser_id' => $advertiserId
             ]
@@ -39,7 +39,7 @@ final class Tools extends \Promopult\TikTokMarketingApi\AbstractService
     {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/tools/action_category/',
+            '/open_api/v1.3/tool/action_category/',
             [
                 'advertiser_id' => $advertiserId
             ]
@@ -57,7 +57,7 @@ final class Tools extends \Promopult\TikTokMarketingApi\AbstractService
     {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/tools/carrier/',
+            '/open_api/v1.3/tool/carrier/',
             [
                 'advertiser_id' => $advertiserId
             ]
@@ -76,7 +76,7 @@ final class Tools extends \Promopult\TikTokMarketingApi\AbstractService
     {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/tools/os_version/',
+            '/open_api/v1.3/tool/os_version/',
             [
                 'advertiser_id' => $advertiserId,
                 'os_type' => $osType
@@ -99,7 +99,7 @@ final class Tools extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/tools/interest_category/',
+            '/open_api/v1.3/tool/interest_category/',
             [
                 'advertiser_id' => $advertiserId,
                 'version' => $version,

@@ -51,7 +51,7 @@ final class Report extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/reports/integrated/get/',
+            '/open_api/v1.3/report/integrated/get/',
             [
                 'advertiser_id' => $advertiserId,
                 'service_type' => $serviceType,

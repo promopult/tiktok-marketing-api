@@ -32,7 +32,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'POST',
-            '/open_api/v1.2/pages/leads/mock/create/',
+            '/open_api/v1.3/page/lead/mock/create/',
             [
                 'advertiser_id' => $advertiserId,
                 'library_id' => $libraryId,
@@ -64,7 +64,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/pages/leads/mock/get/',
+            '/open_api/v1.3/page/lead/mock/get/',
             [
                 'advertiser_id' => $advertiserId,
                 'library_id' => $libraryId,
@@ -92,7 +92,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'POST',
-            '/open_api/v1.2/pages/leads/mock/delete/',
+            '/open_api/v1.3/page/lead/mock/delete/',
             [
                 'advertiser_id' => $advertiserId,
                 'lead_id' => $leadId
@@ -119,7 +119,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/pages/leads/task/',
+            '/open_api/v1.3/page/lead/task/',
             [
                 'advertiser_id' => $advertiserId,
                 'ad_id' => $adId,
@@ -148,7 +148,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/pages/leads/task/',
+            '/open_api/v1.3/page/lead/task/',
             [
                 'advertiser_id' => $advertiserId,
                 'task_id' => $taskId
@@ -173,7 +173,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
         int $taskId
     ): string {
         $url = $this->credentials->getApiBaseUrl()
-            . '/open_api/v1.2/pages/leads/task/download/'
+            . '/open_api/v1.3/page/lead/task/download/'
             . '?' . $this->prepareGetParams([
                 'advertiser_id' => $advertiserId,
                 'task_id' => $taskId
@@ -246,7 +246,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'POST',
-            '/open_api/v1.2/subscription/subscribe/',
+            '/open_api/v1.3/subscription/subscribe/',
             [
                 'app_id' => $appId,
                 'secret' => $secret,
@@ -276,7 +276,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'POST',
-            '/open_api/v1.2/subscription/unsubscribe/',
+            '/open_api/v1.3/subscription/unsubscribe/',
             [
                 'app_id' => $appId,
                 'secret' => $secret,
@@ -307,7 +307,7 @@ final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/subscription/get/',
+            '/open_api/v1.3/subscription/get/',
             [
                 'app_id' => $appId,
                 'secret' => $secret,

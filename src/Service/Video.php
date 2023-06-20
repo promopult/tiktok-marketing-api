@@ -26,7 +26,7 @@ final class Video extends AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/file/video/ad/info/',
+            '/open_api/v1.3/file/video/ad/info/',
             [
                 'advertiser_id' => $advertiserId,
                 'video_ids' => $videoIds
