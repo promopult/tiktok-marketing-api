@@ -36,7 +36,7 @@ final class Bc extends \Promopult\TikTokMarketingApi\AbstractService
     {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/bc/get/',
+            '/open_api/v1.3/bc/get/',
             [
                 'bc_id' => $bcId,
                 'page' => $page,
@@ -62,7 +62,7 @@ final class Bc extends \Promopult\TikTokMarketingApi\AbstractService
     {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/bc/balance/get/',
+            '/open_api/v1.3/bc/balance/get/',
             [
                 'bc_id' => $bcId,
             ]
@@ -94,7 +94,7 @@ final class Bc extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/advertiser/balance/get/',
+            '/open_api/v1.3/advertiser/balance/get/',
             [
                 'bc_id' => $bcId,
                 'filtering' => $filtering,
@@ -131,7 +131,7 @@ final class Bc extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'POST',
-            '/open_api/v1.2/bc/advertiser/create/',
+            '/open_api/v1.3/bc/advertiser/create/',
             [
                 'bc_id' => $bcId,
                 'advertiser_info' => $advertiserInfo,
@@ -167,7 +167,7 @@ final class Bc extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'POST',
-            '/open_api/v1.2/bc/transfer/',
+            '/open_api/v1.3/bc/transfer/',
             [
                 'bc_id' => $bcId,
                 'advertiser_id' => $advertiserId,
@@ -206,7 +206,7 @@ final class Bc extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/advertiser/transaction/get/',
+            '/open_api/v1.3/advertiser/transaction/get/',
             [
                 'bc_id' => $bcId,
                 'filtering' => $filtering,

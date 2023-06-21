@@ -36,7 +36,7 @@ final class Pages extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/pages/get/',
+            '/open_api/v1.3/page/get/',
             [
                 'advertiser_id' => $advertiserId,
                 'page' => $page,

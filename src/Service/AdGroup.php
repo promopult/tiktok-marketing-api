@@ -27,7 +27,7 @@ final class AdGroup extends \Promopult\TikTokMarketingApi\AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/adgroup/get/',
+            '/open_api/v1.3/adgroup/get/',
             [
                 'advertiser_id' => $advertiserId,
                 'fields' => $fields,

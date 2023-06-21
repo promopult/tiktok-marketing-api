@@ -29,7 +29,7 @@ final class Images extends AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/file/image/ad/info/',
+            '/open_api/v1.3/file/image/ad/info/',
             [
                 'advertiser_id' => $advertiserId,
                 'image_ids' => $imageIds

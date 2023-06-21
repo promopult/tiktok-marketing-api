@@ -51,7 +51,7 @@ final class Creatives extends AbstractService
     ): array {
         return $this->requestApi(
             'GET',
-            '/open_api/v1.2/creative/reports/get/',
+            '/open_api/v1.3/creative/report/get/',
             [
                 'advertiser_id' => $advertiserId,
                 'material_type' => $materialType,
