@@ -1,24 +1,12 @@
 {
-    "name": "techworkspulse/tiktok-marketing-api",
+    "name": "promopult/tiktok-marketing-api",
     "description": "https://ads.tiktok.com API PHP-wrapper",
     "type": "library",
     "license": "UNLICENSE",
     "authors": [
         {
             "name": "Dmitry Gladyshev",
-            "email": "dgladyshev@promopult.ru",
-            "role": "Main Developer"
-        },
-        {
-            "name": "Abdul Muizz",
-            "email": "muizz@digitalsymphony.it",
-            "role": "Developer"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/techworkspulse/tiktok-marketing-api"
+            "email": "dgladyshev@promopult.ru"
         }
     ],
     "minimum-stability": "dev",
