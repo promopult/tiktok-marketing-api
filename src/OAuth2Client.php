@@ -8,6 +8,9 @@ use Promopult\TikTokMarketingApi\Exception\MalformedResponse;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class OAuth2Client
 {
     use RequestSenderTrait;
@@ -63,7 +66,7 @@ final class OAuth2Client
 
         /** @var array $parsedBody */
         $parsedBody = json_decode(
-            (string) $response->getBody(),
+            $response->getBody()->__toString(),
             true,
             JSON_THROW_ON_ERROR
         );
@@ -103,13 +106,13 @@ final class OAuth2Client
                 'app_id' => $appId,
                 'auth_code' => $authCode,
                 'secret' => $secret
-            ])
+            ], JSON_THROW_ON_ERROR)
         );
 
         $response = $this->sendRequest($request);
 
         /** @var array $accessToken */
-        $accessToken = json_decode($response->getBody()->getContents(), true, JSON_THROW_ON_ERROR);
+        $accessToken = json_decode($response->getBody()->__toString(), true, JSON_THROW_ON_ERROR);
 
         if (empty($accessToken)) {
             throw new MalformedResponse($request, $response);
@@ -147,7 +150,10 @@ final class OAuth2Client
             'redirect_uri' => $redirectUri,
         ];
 
-        if ($scope) {
+        if (
+            $scope !== null
+            && count($scope) > 0
+        ) {
             $queryParams['scope'] = '[' . implode(',', $scope) . ']';
         }
 

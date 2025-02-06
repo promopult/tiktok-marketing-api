@@ -42,9 +42,11 @@ trait RequestSenderTrait
 
             $uri = current($response->getHeader('Location'));
 
-            /**
-             * @psalm-suppress UnusedVariable
-             */
+            if ($uri === false) {
+                throw new \RuntimeException('Location header is invalid');
+            }
+
+            /** @psalm-suppress UnusedVariable */
             $request = $request->withUri(new Uri($uri));
 
             goto jump;

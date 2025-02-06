@@ -22,6 +22,9 @@ use Psr\Http\Client\ClientInterface;
  * @property Service\Creatives $creatives
  * @property Service\Images $images
  * @property Service\Video $video
+ *
+ * * @psalm-suppress UnusedClass
+ *
  */
 final class Client implements ServiceFactoryInterface
 {

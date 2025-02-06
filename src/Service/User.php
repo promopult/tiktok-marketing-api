@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Promopult\TikTokMarketingApi\Service;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class User extends \Promopult\TikTokMarketingApi\AbstractService
 {
     /**

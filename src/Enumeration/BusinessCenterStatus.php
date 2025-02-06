@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Promopult\TikTokMarketingApi\Enumeration;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class BusinessCenterStatus
 {
     public const REVIEWING = 'REVIEWING'; // Under review

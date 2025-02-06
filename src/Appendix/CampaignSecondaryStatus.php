@@ -8,6 +8,7 @@ namespace Promopult\TikTokMarketingApi\Appendix;
  * Class CampaignSecondaryStatus
  *
  * @discard
+ * @psalm-suppress UnusedClass
  */
 final class CampaignSecondaryStatus
 {

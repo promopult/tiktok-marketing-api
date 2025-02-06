@@ -7,6 +7,9 @@ namespace Promopult\TikTokMarketingApi\Service;
 use Throwable;
 use function json_decode;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class Leads extends \Promopult\TikTokMarketingApi\AbstractService
 {
     /**

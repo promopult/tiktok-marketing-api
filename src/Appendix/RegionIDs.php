@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Promopult\TikTokMarketingApi\Appendix;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class RegionIDs
 {
     public const TYPE_DMA = 'DMA';
@@ -1496,6 +1499,9 @@ final class RegionIDs
         foreach (self::JSON as $items) {
             $ids = array_column($items, 'id');
             $items_with_ids = array_combine($ids, $items);
+            if ($items_with_ids === false) {
+                throw new \RuntimeException('Regions list is empty.');
+            }
             self::$region_cache = self::$region_cache + $items_with_ids;
         }
         return self::$region_cache;
