@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Promopult\TikTokMarketingApi\Appendix;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class Timezone
 {
     public static function getTimezones(): array

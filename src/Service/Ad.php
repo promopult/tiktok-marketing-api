@@ -6,6 +6,9 @@ namespace Promopult\TikTokMarketingApi\Service;
 
 use Throwable;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class Ad extends \Promopult\TikTokMarketingApi\AbstractService
 {
     /**

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Promopult\TikTokMarketingApi\Enumeration;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class BusinessCenterType
 {
     public const NORMAL = 'NORMAL';             // General

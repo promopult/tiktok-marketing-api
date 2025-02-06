@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Promopult\TikTokMarketingApi\Appendix;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class AreaCode
 {
     public static function getAreaCodes(): array

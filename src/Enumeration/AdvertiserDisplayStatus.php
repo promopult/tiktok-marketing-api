@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Promopult\TikTokMarketingApi\Enumeration;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class AdvertiserDisplayStatus
 {
     public const SHOW_ACCOUNT_STATUS_NOT_APPROVED = 'SHOW_ACCOUNT_STATUS_NOT_APPROVED';  // Failed

@@ -6,6 +6,9 @@ namespace Promopult\TikTokMarketingApi\Service;
 
 use Promopult\TikTokMarketingApi\AbstractService;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class Creatives extends AbstractService
 {
     /**

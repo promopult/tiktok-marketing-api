@@ -69,7 +69,13 @@ class TooManyJumpsException extends \RuntimeException
 
     public function getLastResponse(): ResponseInterface
     {
-        return end($this->jumpResponses);
+        $lastJump = end($this->jumpResponses);
+
+        if ($lastJump === false) {
+            throw new \RuntimeException('Unable to retrieve last jump.');
+        }
+
+        return $lastJump;
     }
 
     public function getLastResponseAsString(): string

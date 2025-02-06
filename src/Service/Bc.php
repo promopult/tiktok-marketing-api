@@ -11,6 +11,7 @@ namespace Promopult\TikTokMarketingApi\Service;
  * place, and oversee multiple TikTok For Business accounts.
  *
  * @see https://ads.tiktok.com/marketing_api/docs?id=1690849685291009
+ * @psalm-suppress UnusedClass
  */
 final class Bc extends \Promopult\TikTokMarketingApi\AbstractService
 {

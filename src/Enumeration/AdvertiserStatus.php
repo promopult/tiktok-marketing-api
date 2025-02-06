@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Promopult\TikTokMarketingApi\Enumeration;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class AdvertiserStatus
 {
     public const STATUS_DISABLE = 'STATUS_DISABLE';                                 // Disabled

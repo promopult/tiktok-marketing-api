@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Promopult\TikTokMarketingApi\Enumeration;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class AdvertiserRole
 {
     public const ROLE_ADVERTISER       = 'ROLE_ADVERTISER';         // Standard advertiser (direct customer)
