@@ -14,8 +14,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "ext-json": "*",
-        "psr/http-client": "~1.0.1",
-        "psr/http-message": "~1.0.1|~2.0.0",
+        "psr/http-client": "~1.0.0",
         "guzzlehttp/psr7": "^1.8.4|^2.7.0"
     },
     "require-dev": {
